@@ -1,0 +1,6 @@
+s = int(input())
+if s < 60: print('F')
+elif s < 70: print('D')
+elif s < 80: print('C')
+elif s < 90: print('B')
+else : print('A')
