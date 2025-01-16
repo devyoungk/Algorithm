@@ -7,8 +7,7 @@ while True:
         if n%i == 0:
             A.append(i)
         if sum(A)+1 == n:
-            B = ''
-            B += str(n) + ' = 1'
+            B = str(n) + ' = 1'
             for a in A:
                 B += ' + ' + str(a)
         else:
