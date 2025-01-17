@@ -1,10 +1,7 @@
 def gcd(a, b):
-    if a < b:
-        a, b = b, a
-    if a%b == 0:
-        return b
-    else:
-        return gcd(b, a%b)
+    while b > 0:
+        a, b = b, a%b
+    return a
 
 a, b = map(int,input().split())
 print(gcd(a, b))
