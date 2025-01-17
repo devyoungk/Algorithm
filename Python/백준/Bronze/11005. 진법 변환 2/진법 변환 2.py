@@ -4,8 +4,7 @@ while a > 0:
     if a%b >= 10:
         z = a%b + 55
         x.append(chr(z))
-    else: x.append(a%b)
+    else: x.append(str(a%b))
     a //= b
-
-for i in range(len(x)-1,-1,-1):
-    print(x[i], end="")
+ 
+print("".join(x[::-1]))
