@@ -1,14 +1,14 @@
 def X(a, b):
-    A = [list(range(b+1))]
-    for i in range(1,a+1):
-        B = []
-        for j in range(0, b+1):
-            c = 0
-            for k in range(0, j+1):
-                c += A[i-1][k]
-            B.append(c)
-        A.append(B)
-    return(A[a][b])
+    A = [[0] * (b+1) for _ in range(a+1)]
+    for i in range(b+1):
+        A[0][i] = i
+    
+    for i in range(1, a+1):
+        A[i][0] = 0
+        for j in range(1, b+1):
+            A[i][j] = A[i][j-1] + A[i-1][j]
+
+    return A[a][b]
 
 
 T = int(input())
