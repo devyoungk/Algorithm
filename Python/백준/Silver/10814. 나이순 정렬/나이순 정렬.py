@@ -1,7 +1,9 @@
-n = int(input())
+import sys
+
+n = int(sys.stdin.readline())
 A = []
 for i in range(n):
-    age, name = input().split()
+    age, name = sys.stdin.readline().split()
     A.append([int(age), i, name])
 A.sort()
 for i in range(n):
