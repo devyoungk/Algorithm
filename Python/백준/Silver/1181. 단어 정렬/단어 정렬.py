@@ -2,11 +2,10 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-A = []
+A = set()
 for i in range(n):
     s = input().strip()
-    if s not in A:
-        A.append(s)
-A.sort(key=lambda x: (len(x), x))
-for x in A:
+    A.add(s)
+B = sorted(A, key=lambda x: (len(x), x))
+for x in B:
     print(x)
