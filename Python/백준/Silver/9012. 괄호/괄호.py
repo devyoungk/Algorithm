@@ -2,7 +2,6 @@ n = int(input())
 for i in range(n):
     S = input()
     A = []
-    flag = True
     for s in S:
         if s == '(':
             A.append(s)
@@ -10,9 +9,9 @@ for i in range(n):
             if A and A[-1] == '(':
                 A.pop()
             else:
-                flag = False
+                A.append(s)
                 break
-    if flag and not A:
-        print('YES')
-    else:
+    if A:
         print('NO')
+    else:
+        print('YES')
