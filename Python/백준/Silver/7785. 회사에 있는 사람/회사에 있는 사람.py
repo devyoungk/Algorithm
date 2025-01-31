@@ -2,14 +2,13 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-C = {}
+C = set()
 for i in range(n):
     a, b = input().split()
-    C[a] = b
-    if b == "leave":
-        del C[a]
-
-D = sorted(C.items(), reverse=True)
-A = dict(D)
-for a in A.keys():
-    print(a)
+    if not a in C:
+        C.add(a)
+    else:
+        C.remove(a)
+A = sorted(C, reverse=True)
+for name in A:
+    print(name)
