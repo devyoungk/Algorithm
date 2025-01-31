@@ -10,5 +10,4 @@ for i in range(n):
     else:
         C.remove(a)
 A = sorted(C, reverse=True)
-for name in A:
-    print(name)
+print('\n'.join(A))
