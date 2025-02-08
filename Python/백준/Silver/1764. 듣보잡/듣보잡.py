@@ -2,11 +2,10 @@ import sys
 input = sys.stdin.readline
 
 N, M = map(int,input().split())
-A = []
+A = set()
 for _ in range(N):
     s = input().strip()
-    A.append(s)
-A = set(A)
+    A.add(s)
 B = []
 for _ in range(M):
     s = input().strip()
