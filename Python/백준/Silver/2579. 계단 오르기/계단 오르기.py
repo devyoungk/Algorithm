@@ -16,4 +16,4 @@ score[2] = max(A[0] + A[2], A[1]+A[2])
 for i in range(3, N):
     score[i] = max(score[i-2] + A[i], score[i-3] + A[i-1] + A[i])
 
-print(score[N-1])
+print(score[-1])
