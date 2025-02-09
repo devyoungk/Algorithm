@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 N = int(input())
 A = []
 B = [int(input()) for _ in range(N)]
