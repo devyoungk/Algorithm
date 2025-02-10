@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 N, M = map(int,input().split())
 A = {}
 for _ in range(N):
@@ -5,5 +8,5 @@ for _ in range(N):
     A[s] = p
 
 for _ in range(M):
-    x = input()
+    x = input().strip()
     print(A[x])
