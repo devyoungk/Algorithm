@@ -1,8 +1,4 @@
 def solution(s):
-    while len(s) in [4, 6]:
-        try:
-            s = int(s)
-            return True
-        except:
-            return False
+    if len(s) in [4,6] and s.isdigit():
+        return True
     return False
