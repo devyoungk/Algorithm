@@ -2,9 +2,6 @@ from collections import deque
 
 N = int(input())
 A = deque(enumerate(map(int, input().split())))
-B = dict()
-for i in range(N):
-    B[A[i]] = str(i+1)
 
 answer = []
 
