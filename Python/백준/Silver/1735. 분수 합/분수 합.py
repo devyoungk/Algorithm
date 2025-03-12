@@ -1,7 +1,7 @@
 def gcd(x, y):
-    if y == 0:
-        return x
-    return gcd(y, x%y)
+    while y > 0:
+        x, y = y, x%y
+    return x
 
 a, b = map(int, input().split())
 c, d = map(int, input().split())
@@ -11,4 +11,4 @@ y = b*d
 
 z = gcd(x,y)
 
-print(f'{x//z} {y//z}')
+print(x//z, y//z)
