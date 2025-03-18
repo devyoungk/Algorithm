@@ -4,6 +4,5 @@ def solution(s):
         a += 1
         b += s.count('0')
         s = s.replace('0','')
-        l = len(s)
-        s = bin(l)[2:]
+        s = bin(len(s))[2:]
     return a, b
