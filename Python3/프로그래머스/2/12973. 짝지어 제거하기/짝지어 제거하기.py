@@ -1,5 +1,4 @@
 def solution(s):
-    answer = -1
     A = []
     for x in s:
         if not A:
