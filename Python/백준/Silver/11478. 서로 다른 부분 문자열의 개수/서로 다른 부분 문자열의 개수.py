@@ -1,6 +1,6 @@
 S = input()
 A = set()
-for i in range(len(S)):
-    for j in range(len(S)-i):
-        A.add(S[j:j+i+1])
+for i in range(1,len(S)+1):
+    for j in range(len(S)-i+1):
+        A.add(S[j:j+i])
 print(len(A))
