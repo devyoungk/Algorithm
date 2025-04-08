@@ -1,28 +1,22 @@
 N = int(input())
-C = int(input())
+M = int(input())
 A = []
-B = [set() for _ in range(N)]
-for _ in range(C):
+
+for _ in range(M):
     x, y = map(int,input().split())
     A.append([x,y])
 
-B[0] = set([1])
+B = [{1}]
+Check = {1}
 
-i = 0
-while i < N-1:
-    for a in A:
-        x = None
-        if a[1] in B[i]:
-            x = a[0] 
-        elif a[0] in B[i]:
-            x = a[1]
-        if x:
-            B[i+1].add(x)
-    i += 1
+for i in range(N):
+    C = set()
+    for x, y in A:
+        if x in B[-1] and y not in Check:
+            C.add(y)
+        elif y in B[-1] and x not in Check:
+            C.add(x)
+    B.append(C)
+    Check.update(C)
 
-C = set()
-for b in B:
-    for x in b:
-        C.add(x)
-
-print(len(C)-1)
+print(len(Check)-1)
