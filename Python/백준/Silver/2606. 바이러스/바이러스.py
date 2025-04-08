@@ -1,22 +1,20 @@
 N = int(input())
 M = int(input())
-A = []
+A = [[] for _ in range(N+1)]
 
 for _ in range(M):
     x, y = map(int,input().split())
-    A.append([x,y])
+    A[x].append(y)
+    A[y].append(x)
 
-B = [{1}]
 Check = {1}
+queue = [1]
 
-for i in range(N):
-    C = set()
-    for x, y in A:
-        if x in B[-1] and y not in Check:
-            C.add(y)
-        elif y in B[-1] and x not in Check:
-            C.add(x)
-    B.append(C)
-    Check.update(C)
+while queue:
+    i = queue.pop()
+    for a in A[i]:
+        if a not in Check:
+            Check.add(a)
+            queue.append(a)
 
 print(len(Check)-1)
