@@ -3,24 +3,17 @@ def solution(dirs):
     x, y = 0, 0
     for m in dirs:
         move = [(x,y)]
-        if m == 'U':
+        if m == 'U' and y != 5:
             y += 1
-        elif m == 'D':
+        elif m == 'D' and y != -5:
             y -= 1
-        elif m == 'L':
+        elif m == 'L' and x != -5:
             x -= 1
-        elif m == 'R':
+        elif m == 'R' and x != 5:
             x += 1
-        if x == -6:
-            x = -5
-        elif x == 6:
-            x = 5
-        elif y == -6:
-            y = -5
-        elif y == 6:
-            y = 5
         else:
-            move.append((x,y))
-            A.add(tuple(move))
-            A.add(tuple(move[::-1]))
-    return len(A)//2
+            continue
+        move.append((x,y))
+        A.add(tuple(sorted(move)))
+    print(A)
+    return len(A)
