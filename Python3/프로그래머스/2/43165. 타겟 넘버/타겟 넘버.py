@@ -1,12 +1,9 @@
-import sys
-sys.setrecursionlimit(10**6)
-
 def solution(numbers, target):
     answer = 0
     A = []
     def sol(i):
         nonlocal answer
-        if len(A) == len(numbers):
+        if i == len(numbers):
             if sum(A) == target:
                 answer += 1
             return
