@@ -11,25 +11,16 @@ def check(A):
         return 'blue'
     elif b == 0:
         return 'white'
-    else:
-        return 0
 
 def split(A):
     n = len(A)
     mid = n//2
-
     A1 = [a[:mid] for a in A[:mid]]
     A2 = [a[mid:] for a in A[:mid]]
     A3 = [a[:mid] for a in A[mid:]]
     A4 = [a[mid:] for a in A[mid:]]
-
     return [A1, A2, A3, A4]
 
-N = int(input())
-A = [list(input().split()) for _ in range(N)]
-
-blue = 0
-white = 0
 def sol(A):
     global blue, white
     result = check(A)
@@ -40,6 +31,12 @@ def sol(A):
     else:
         for a in split(A):
             sol(a)
+
+N = int(input())
+A = [list(input().split()) for _ in range(N)]
+
+blue = 0
+white = 0
 
 sol(A)
 
