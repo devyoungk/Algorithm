@@ -16,10 +16,10 @@ def solution(topping):
         if t in A:
             A[t] -= 1
             if A[t] == 0:
-                del A[t]
+                A.pop(t)
                 NL -= 1
         if NL == NR:
             answer += 1
-        if NL < NR:
+        elif NL < NR:
             break
     return answer
