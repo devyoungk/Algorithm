@@ -1,16 +1,12 @@
 def check(A):
     C = []
-    for i in range(len(A)):
+    for a in A:
         if not C:
-            C.append(A[i])
-        elif C[-1] == '(' and A[i] == ')':
-            C.pop()
-        elif C[-1] == '[' and A[i] == ']':
-            C.pop()
-        elif C[-1] == '{' and A[i] == '}':
+            C.append(a)
+        elif (C[-1], a) in (('(', ')'), ('[',']'),('{', '}')):
             C.pop()
         else:
-            C.append(A[i])
+            C.append(a)
     return False if C else True
     
 def solution(s):
