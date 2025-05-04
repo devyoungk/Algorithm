@@ -6,9 +6,6 @@ def solution(queue1, queue2):
     queue1 = queue1 + [0 for _ in range(len(queue2))]
     i, j = 0, 0
     while s != t:
-        if i == len(queue1) or j == len(queue2):
-            answer = -1
-            break
         if s > t:
             s -= queue1[i]
             i += 1
@@ -18,5 +15,7 @@ def solution(queue1, queue2):
             j += 1
             x += 1
         answer += 1
-        
+        if j == len(queue2):
+            answer = -1
+            break
     return answer
