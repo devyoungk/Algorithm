@@ -4,11 +4,12 @@ def solution(msg):
     A = []
     while msg:
         x = msg
-        for i in range(len(msg)):
-            if x[:len(msg)-i] in dic:
-                A.append(dic[x[:len(msg)-i]])
-                dic[x[:len(msg)-i+1]] = n
-                n += 1
-                msg = x[len(msg)-i:]
+        for i in range(len(msg),-1,-1):
+            if x[:i] in dic:
+                msg = x[i:]
+                A.append(dic[x[:i]])
+                if msg:
+                    dic[x[:i+1]] = n
+                    n += 1
                 break
     return A
