@@ -4,10 +4,10 @@ def gcd(a, b):
     return a
 
 def list_gcd(A):
-    result = A[0]
+    g = A[0]
     for num in A[1:]:
-        result = gcd(result, num)
-    return result
+        g = gcd(g, num)
+    return g
 
 def solution(arrayA, arrayB):
     answer = 0
