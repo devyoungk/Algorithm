@@ -14,9 +14,9 @@ for d in D:
 
 time = float('inf')
 height = 0
-targetH = max(D)
+targetH = 0
 
-while targetH >= 0:
+while targetH <= max(D):
     Block_now = B
     t = 0
     for d in D:
@@ -28,9 +28,11 @@ while targetH >= 0:
             Block_now -= hd*D[d]
             t -= 2*hd*D[d]
     if Block_now >= 0:
-        if t < time:
+        if t <= time:
             time = t
             height = targetH
-    targetH -= 1
+    else:
+        break
+    targetH += 1
 
 print(time, height)
