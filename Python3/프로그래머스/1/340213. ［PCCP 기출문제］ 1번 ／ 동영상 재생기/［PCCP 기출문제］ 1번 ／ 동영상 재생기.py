@@ -21,14 +21,6 @@ def solution(video_len, pos, op_start, op_end, commands):
         if os <= p <= oe:
             p = oe
     h = p//60
-    if h < 10:
-        h = '0'+str(h)
-    else:
-        h = str(h)
     m = p%60
-    if m < 10:
-        m = '0'+str(m)
-    else:
-        m = str(m)
-    answer = h + ':' + m
-    return answer
+    
+    return f"{h:02d}:{m:02d}"
