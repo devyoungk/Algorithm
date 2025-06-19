@@ -1,13 +1,20 @@
 N = int(input())
 M = int(input())
 S = input()
-l = 2*N+1
-x = 'IO'*N+'I'
-cnt = 0
-for i in range(M-l+1):
-    if S[i] == 'O':
-        continue
-    if S[i:i+l] == x:
-        cnt += 1
 
-print(cnt)
+i = 0
+cnt = 0
+ans = 0
+
+while i < M-2:
+    if S[i] == 'I' and S[i+1] == 'O' and S[i+2] == 'I':
+        cnt += 1
+        if cnt == N:
+            ans += 1
+            cnt -= 1 
+        i += 2
+    else:
+        cnt = 0
+        i += 1
+
+print(ans)
