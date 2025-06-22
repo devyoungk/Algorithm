@@ -11,6 +11,6 @@ for i in range(N):
             next.add(n-V[i])
     if not next:
         break
-    now = list(next)
+    now = next
 
 print(max(next)) if next else print(-1)
