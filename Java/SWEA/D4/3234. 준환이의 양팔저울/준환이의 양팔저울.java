@@ -2,8 +2,7 @@ import java.util.*;
 import java.io.*;
 
 class Solution {
-	static int cnt, sum;
-//	static int[] A;
+	static int cnt;
 
 	public static void main(String args[]) throws Exception {
 		Scanner sc = new Scanner(System.in);
@@ -16,14 +15,17 @@ class Solution {
 				A[i] = sc.nextInt();
 			}
 			cnt = 0;
-			sum = 0;
+			int sum = 0;
 
-			sol(0, N, A);
+			sol(0, N, A, sum);
 			System.out.println("#" + t + " " + cnt);
 		}
 	}
 
-	static void sol(int d, int N, int[] A) {
+	static void sol(int d, int N, int[] A, int sum) {
+		if (sum < 0) {
+			return;
+		}
 		if (d == N) {
 			cnt++;
 			return;
@@ -34,15 +36,8 @@ class Solution {
 			}
 			int x = A[i];
 			A[i] = 0;
-			sum -= x;
-			if (sum >= 0) {
-				sol(d + 1 , N, A);
-			}
-			sum += 2*x;
-			if (sum >= 0) {
-				sol(d + 1, N, A);
-			}
-			sum -= x;
+			sol(d + 1, N, A, sum - x);
+			sol(d + 1, N, A, sum + x);
 			A[i] = x;
 		}
 	}
