@@ -1,18 +1,20 @@
-import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
 
-class Main {
-    public static void main(String[] args) throws IOException {
-        Scanner in = new Scanner(System.in);
-        int a = in.nextInt();
-        int b = in.nextInt();
-        int c = in.nextInt();
-        int X = a*b*c;
-        String S = Integer.toString(X);
-        for (int i=0; i<=9; i++){
-            String I = Integer.toString(i);
-            int cnt = S.length()-S.replace(I,"").length();
-            System.out.println(cnt);
-        }
-    }
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int A = sc.nextInt();
+		int B = sc.nextInt();
+		int C = sc.nextInt();
+		int X = A*B*C;
+		
+		int[] arr = new int[10];
+		while (X > 0) {
+			arr[X%10]++;
+			X /= 10;
+		}
+		for (int i = 0; i < 10; i++) {
+			System.out.println(arr[i]);
+		}
+	}
 }
