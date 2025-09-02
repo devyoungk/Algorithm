@@ -25,6 +25,6 @@ public class Main {
             stack.push(new int[]{x, i});
         }
 
-        System.out.println(sb.toString().trim());
+        System.out.println(sb.toString());
     }
 }
