@@ -1,12 +1,14 @@
+import java.io.*;
 import java.util.*;
 
 public class Main {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		BufferedReader br =  new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
 
-		int N = sc.nextInt();
-		int M = sc.nextInt();
-		int H = sc.nextInt();
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+		int H = Integer.parseInt(st.nextToken());
 
 		int[][][] tomato = new int[H][M][N];
 
@@ -16,8 +18,9 @@ public class Main {
 
 		for (int i = 0; i < H; i++) {
 			for (int j = 0; j < M; j++) {
+				st = new StringTokenizer(br.readLine());
 				for (int k = 0; k < N; k++) {
-					tomato[i][j][k] = sc.nextInt();
+					tomato[i][j][k] = Integer.parseInt(st.nextToken());
 					if (tomato[i][j][k] == 1) {
 						Q.push(new int[] { i, j, k, 1 });
 					} else if (tomato[i][j][k] == 0) {
