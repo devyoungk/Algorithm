@@ -1,32 +1,42 @@
+import java.io.*;
 import java.util.*;
 
 public class Main {
+	static int[] A;
 	static int N, M;
-	static Stack<Integer> S;
-	
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		N = sc.nextInt();
-		M = sc.nextInt();
-		S = new Stack<>();
+	static StringBuilder sb = new StringBuilder();
+	static boolean[] checked;
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+
+		A = new int[M];
+		checked = new boolean[N + 1];
+
+		backtracking(0);
 		
-		backtracking();
+		System.out.println(sb);
 	}
-	
-	static void backtracking() {
-		if (S.size() == M) {
-			for (int x : S) {
-				System.out.print(x + " ");
+
+	static void backtracking(int x) {
+		if (x == M) {
+			for (int a : A) {
+				sb.append(a).append(' ');
 			}
-			System.out.println();
+			sb.append('\n');
 			return;
 		}
-		
+
 		for (int i = 1; i <= N; i++) {
-			if (!S.contains(i)) {
-				S.push(i);
-				backtracking();
-				S.pop();
+			if (!checked[i]) {
+				A[x] = i;
+				checked[i] = true;
+				backtracking(x + 1);
+				checked[i] = false;
 			}
 		}
 	}
