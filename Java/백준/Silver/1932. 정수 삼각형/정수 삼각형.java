@@ -1,5 +1,5 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
@@ -8,34 +8,35 @@ public class Main {
 		
 		int N = Integer.parseInt(br.readLine());
 		
-		int[][] A = new int[N][N];
+		int[][] A = new int[N][];
 		
 		for (int i = 0; i < N; i++) {
-			int idx = 0;
 			st = new StringTokenizer(br.readLine());
-			while (st.hasMoreTokens()) {
-				A[i][idx++] = Integer.parseInt(st.nextToken());
+			A[i] = new int[i+1];
+			for (int j = 0; j <= i; j++) {
+				A[i][j] = Integer.parseInt(st.nextToken());
 			}
 		}
 		
-		int[][] DP = new int[N][N];
-		DP[0][0] = A[0][0];
+		int[][] dp = new int[N][];
 		
-		int ans = DP[0][0];
+		dp[0] = A[0];
 		
 		for (int i = 1; i < N; i++) {
-			int idx = 0;
-			while (idx <= i) {
-				if (idx == 0) {
-					DP[i][idx] = DP[i-1][idx] + A[i][idx];
-				}
-				else {
-					DP[i][idx] = Math.max(DP[i-1][idx], DP[i-1][idx - 1]) + A[i][idx];
-				}
-				ans = Math.max(ans, DP[i][idx]);
-				idx++;
+			dp[i] = new int[i+1];
+			for (int j = 1; j < i; j++) {
+				dp[i][j] = A[i][j] + Math.max(dp[i-1][j], dp[i-1][j-1]);
 			}
+			dp[i][0] = dp[i-1][0] + A[i][0];
+			dp[i][i] = dp[i-1][i-1] + A[i][i];
 		}
-		System.out.println(ans);
+		
+		int max = 0;
+		
+		for (int i = 0; i < N; i++) {
+			max = Math.max(max, dp[N-1][i]);
+		}
+		
+		System.out.println(max);
 	}
 }
