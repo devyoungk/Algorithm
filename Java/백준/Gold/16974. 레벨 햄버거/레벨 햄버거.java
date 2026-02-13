@@ -45,10 +45,12 @@ public class Main {
 			ans += P[n];
 			return;
 		}
+		
+		long mid = L[n] / 2 + 1;
 
-		if (x == L[n] / 2 + 1) {
+		if (x == mid) {
 			ans += P[n - 1] + 1;
-		} else if (x > L[n] / 2 + 1) {
+		} else if (x > mid) {
 			ans += P[n - 1] + 1;
 			sol(n - 1, x - L[n - 1] - 2);
 		} else {
