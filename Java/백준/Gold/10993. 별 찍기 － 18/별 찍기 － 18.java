@@ -11,8 +11,13 @@ public class Main {
 		star[1] = new char[][] { { '*' } };
 
 		for (int i = 2; i <= N; i++) {
+			int h = (1 << i) - 1;          // height = 2^i - 1
+		    int w = (1 << (i + 1)) - 3;    // width  = 2^(i+1) - 3
+		    int mid = 1 << (i - 1);        // 가운데 정렬용 오프셋 = 2^(i-1)
+			
 			// 다음 별 배열 만들기
-			star[i] = new char[(int) Math.pow(2, i) - 1][(int) Math.pow(2, i + 1) - 3];
+			star[i] = new char[h][w];
+			
 			// 공백 채워두기
 			for (int y = 0; y < star[i].length; y++) {
 				Arrays.fill(star[i][y], ' ');
@@ -22,31 +27,31 @@ public class Main {
 				// 이전 별 모양 이동
 				for (int row = 0; row < star[i - 1].length; row++) {
 					for (int col = 0; col < star[i - 1][0].length; col++) {
-						star[i][row + 1][col + (int) Math.pow(2, i - 1)] = star[i - 1][row][col];
+						star[i][row + 1][col + mid] = star[i - 1][row][col];
 					}
 				}
 				// 겉부분 채우기
 				// 맨 위는 다 채움
 				Arrays.fill(star[i][0], '*');
 				// 나머지는 양 끝만
-				for (int row = 1; row < star[i].length; row++) {
+				for (int row = 1; row < h; row++) {
 					star[i][row][row] = '*';
-					star[i][row][star[i][0].length - row - 1] = '*';
+					star[i][row][w - row - 1] = '*';
 				}
 			} else {
 				// 이전 별 모양 이동
 				for (int row = 0; row < star[i - 1].length; row++) {
 					for (int col = 0; col < star[i - 1][0].length; col++) {
-						star[i][row + (int) Math.pow(2, i - 1) - 1][col + (int) Math.pow(2, i - 1)] = star[i - 1][row][col];
+						star[i][row + mid - 1][col + mid] = star[i - 1][row][col];
 					}
 				}
 				// 겉부분 채우기
 				// 맨 아래는 다 채움
-				Arrays.fill(star[i][star[i].length - 1], '*');
+				Arrays.fill(star[i][h - 1], '*');
 				// 나머지는 양 끝만
-				for (int row = 1; row < star[i].length; row++) {
-					star[i][star[i].length - row - 1][row] = '*';
-					star[i][star[i].length - row - 1][star[i][0].length - row - 1] = '*';
+				for (int row = 1; row < h; row++) {
+					star[i][h - row - 1][row] = '*';
+					star[i][h - row - 1][w - row - 1] = '*';
 				}
 			}
 		}
@@ -58,8 +63,8 @@ public class Main {
 	// 별 배열 출력 함수
 	static void print(char[][] a) {
 		StringBuilder sb = new StringBuilder();
-		int last = -1;
 		for (int i = 0; i < a.length; i++) {
+			int last = -1; // 행에서 마지막 '*' 위치
 			for (int j = a[i].length - 1; j >= 0; j--) {
 	            if (a[i][j] == '*') { 
 	            	last = j; 
@@ -72,3 +77,4 @@ public class Main {
 		System.out.print(sb);
 	}
 }
+
